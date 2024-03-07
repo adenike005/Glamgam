@@ -8,8 +8,13 @@ import { Ionicons } from "react-native-vector-icons";
 import TabNavigator from "./TabNavigator";
 import { TouchableOpacity, View } from "react-native";
 import { StatusBar } from "react-native";
-import Search from '../Screen/Search'
-import Settings from '../Screen/Settings' // Corrected import statement
+import Search from "../Screen/Search";
+import Settings from "../Screen/Settings"; // Corrected import statement
+import LipPage from "../Page/LipPage";
+import HairPage from "../Page/HairPage";
+import NailPage from "../Page/NailPage";
+import MakeupPage from "../Page/MakeupPage";
+import SpaPage from "../Page/SpaPage";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -74,10 +79,7 @@ const HomeStack = createStackNavigator();
 //   );
 // };
 
-
-
-const HomeStackScreen = ({navigation}) => {
- 
+const HomeStackScreen = ({ navigation }) => {
   return (
     <HomeStack.Navigator
       screenOptions={{
@@ -86,19 +88,20 @@ const HomeStackScreen = ({navigation}) => {
           shadowColor: "#fff", // iOS
           elevation: 0, // Android
         },
-        headerTintColor: 'purple',
+        headerTintColor: "purple",
         headerTitleStyle: {
           fontWeight: "bold",
           fontFamily: "Italianno",
           fontWeight: "300",
         },
         headerTitleAlign: "center",
-      }}>
+      }}
+    >
       <HomeStack.Screen
         name="Home"
-        component={Home}
+        component={TabNavigator}
         options={{
-          title: 'Glamgam',
+          title: "Glamgam",
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Ionicons
@@ -110,7 +113,7 @@ const HomeStackScreen = ({navigation}) => {
             </TouchableOpacity>
           ),
           headerRight: () => (
-                       <View style={{ display: "flex", flexDirection: "row" }}>
+            <View style={{ display: "flex", flexDirection: "row" }}>
               <TouchableOpacity>
                 <Ionicons
                   name="search-outline"
@@ -124,32 +127,19 @@ const HomeStackScreen = ({navigation}) => {
                   size={20}
                   backgroundColor="white"
                   style={{ paddingHorizontal: "10%" }}
-                  onPress={() => navigation.navigate('Settings')}
+                  onPress={() => navigation.navigate("Settings")}
                 />
               </TouchableOpacity>
             </View>
           ),
         }}
       />
-     <HomeStack.Screen 
-        name="Settings"
-        component={Settings}
-        options={({route}) => ({
-          title: route.params.title,
-          headerBackTitleVisible: false
-        })}
-      />
-       {/* <HomeStack.Screen 
-        name="CardItemDetails"
-        component={CardItemDetails}
-        options={({route}) => ({
-          // title: route.params.title,
-          headerBackTitleVisible: false,
-          headerTitle: false,
-          headerTransparent: true,
-          headerTintColor: '#fff'
-        })}
-      /> */}
+      <HomeStack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
+      <HomeStack.Screen name="LipPage" component={LipPage} options={{ headerShown: false }} />
+      <HomeStack.Screen name="NailPage" component={NailPage} options={{ headerShown: false }} />
+      <HomeStack.Screen name="HairPage" component={HairPage} options={{ headerShown: false }} />
+      <HomeStack.Screen name="MakeupPage" component={MakeupPage} options={{ headerShown: false }} />
+      <HomeStack.Screen name="SpaPage" component={SpaPage} options={{ headerShown: false }} />
     </HomeStack.Navigator>
   );
 };
@@ -174,8 +164,6 @@ const HomeStackScreen = ({navigation}) => {
 //   );
 // }
 
-
-
 const Indexs = () => {
   return (
     <NavigationContainer>
@@ -192,4 +180,3 @@ const Indexs = () => {
 };
 
 export default Indexs;
-
