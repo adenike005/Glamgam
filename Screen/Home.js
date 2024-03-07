@@ -1,10 +1,18 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import Slider from '../Page/Slider'
+import Sliders from '../Page/Sliders'
+
 
 const Home = () => {
   return (
     <View style={{backgroundColor:"white", flex:1}}>
-      <Text>Home</Text>
+     <View style={{paddingHorizontal:"5%"}}>
+     <Slider/>
+       <View style={{marginTop:"5%"}}>
+       <Sliders/>
+       </View>
+     </View>
     </View>
   )
 }

@@ -1,96 +1,195 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import Home from '../Screen/Home';
-import Welcome from '../Screen/Welcome';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Home from "../Screen/Home";
+import Welcome from "../Screen/Welcome";
 import { Ionicons } from "react-native-vector-icons";
-import TabNavigator from './TabNavigator';
-import { TouchableOpacity } from 'react-native';
+import TabNavigator from "./TabNavigator";
+import { TouchableOpacity, View } from "react-native";
+import { StatusBar } from "react-native";
+import Search from '../Screen/Search'
+import Settings from '../Screen/Settings' // Corrected import statement
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const HomeStack = createStackNavigator();
-const WelcomeStack = createStackNavigator();
+// const WelcomeStack = createStackNavigator();
+// const OtherStack = createStackNavigator(); // New stack navigator for other screen
+
+// const HomeStackScreen = ({ navigation }) => {
+//   return (
+//     <HomeStack.Navigator
+//       screenOptions={{
+//         headerStyle: {
+//           backgroundColor: "#fff",
+//         },
+//         headerTintColor: "purple",
+//         headerTitleStyle: {
+//           fontWeight: "bold",
+//           fontFamily: "Italianno",
+//           fontWeight: "300",
+//         },
+//         headerTitleAlign: "center",
+//       }}
+//     >
+//       <HomeStack.Screen
+//         name="Home"
+//         component={TabNavigator}
+//         options={{
+//           title: "GlamGam",
+//           headerLeft: () => (
+//             <TouchableOpacity onPress={() => navigation.openDrawer()}>
+//               <Ionicons
+//                 name="menu-outline"
+//                 size={20}
+//                 backgroundColor="white"
+//                 style={{ paddingHorizontal: "15%" }}
+//               />
+//             </TouchableOpacity>
+//           ),
+//           headerRight: () => (
+//             <View style={{ display: "flex", flexDirection: "row" }}>
+//               <TouchableOpacity>
+//                 <Ionicons
+//                   name="search-outline"
+//                   size={20}
+//                   backgroundColor="white"
+//                 />
+//               </TouchableOpacity>
+//               <TouchableOpacity>
+//                 <Ionicons
+//                   name="person-circle-outline"
+//                   size={20}
+//                   backgroundColor="white"
+//                   style={{ paddingHorizontal: "15%" }}
+//                   onPress={() => navigation.navigate('Settings')}
+//                 />
+//               </TouchableOpacity>
+//             </View>
+//           ),
+//         }}
+//       />
+//     </HomeStack.Navigator>
+//   );
+// };
+
+
 
 const HomeStackScreen = ({navigation}) => {
+ 
   return (
     <HomeStack.Navigator
       screenOptions={{
-        headerStyle:{
-          backgroundColor:"#fff"
+        headerStyle: {
+          backgroundColor: "#fff",
+          shadowColor: "#fff", // iOS
+          elevation: 0, // Android
         },
-        headerTintColor:"purple",
-        headerTitleStyle:{
-          fontWeight:"bold",
+        headerTintColor: 'purple',
+        headerTitleStyle: {
+          fontWeight: "bold",
+          fontFamily: "Italianno",
+          fontWeight: "300",
         },
-        headerTitleAlign: 'center' // Align title in the center
-      }}
-    >
+        headerTitleAlign: "center",
+      }}>
       <HomeStack.Screen
-        name='Home'
-        component={TabNavigator}
+        name="Home"
+        component={Home}
         options={{
-          title:"GlamGam",
+          title: 'Glamgam',
           headerLeft: () => (
-           <TouchableOpacity>
-             <Ionicons 
-              name='menu-outline' 
-              size={20} 
-              backgroundColor="white"
-              style={{paddingHorizontal:"15%"}}
-              onPress={() => {
-                navigation.openDrawer()
-              }}
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+              <Ionicons
+                name="menu-outline"
+                size={20}
+                backgroundColor="white"
+                style={{ paddingHorizontal: "10%" }}
               />
-           </TouchableOpacity>
-          ),
-          headerRight: () =>(
-            <TouchableOpacity>
-              <Ionicons 
-            name='notifications-outline' 
-            size={20} 
-            backgroundColor="white"
-            style={{paddingHorizontal:"15%"}}
-            
-          />
             </TouchableOpacity>
+          ),
+          headerRight: () => (
+                       <View style={{ display: "flex", flexDirection: "row" }}>
+              <TouchableOpacity>
+                <Ionicons
+                  name="search-outline"
+                  size={20}
+                  backgroundColor="white"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Ionicons
+                  name="person-circle-outline"
+                  size={20}
+                  backgroundColor="white"
+                  style={{ paddingHorizontal: "10%" }}
+                  onPress={() => navigation.navigate('Settings')}
+                />
+              </TouchableOpacity>
+            </View>
           ),
         }}
       />
+     <HomeStack.Screen 
+        name="Settings"
+        component={Settings}
+        options={({route}) => ({
+          title: route.params.title,
+          headerBackTitleVisible: false
+        })}
+      />
+       {/* <HomeStack.Screen 
+        name="CardItemDetails"
+        component={CardItemDetails}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff'
+        })}
+      /> */}
     </HomeStack.Navigator>
   );
-}
+};
 
-const WelcomeStackScreen = () => {
-  return (
-    <WelcomeStack.Navigator
-      screenOptions={{
-        headerStyle:{
-          backgroundColor:"#fff"
-        },
-        headerTintColor:"#000",
-        headerTitleStyle:{
-          fontWeight:"bold",
-        },
-        headerTitleAlign: 'center' // Align title in the center
-      }}
-    >
-      <WelcomeStack.Screen name='Welcome' component={Welcome}/>
-    </WelcomeStack.Navigator>
-  );
-}
+// const WelcomeStackScreen = () => {
+//   return (
+//     <WelcomeStack.Navigator
+//       screenOptions={{
+//         headerShown: false,
+//         headerStyle: {
+//           backgroundColor: "#fff"
+//         },
+//         headerTintColor: "#000",
+//         headerTitleStyle: {
+//           fontWeight: "bold"
+//         },
+//         headerTitleAlign: 'center'
+//       }}
+//     >
+//       <WelcomeStack.Screen name='Settings' component={Settings}/>
+//     </WelcomeStack.Navigator>
+//   );
+// }
+
+
 
 const Indexs = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
-        <Drawer.Screen name='Home' component={HomeStackScreen}/>
-        <Drawer.Screen name='Welcome' component={WelcomeStackScreen}/>
+      <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
+      <Drawer.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
+        <Drawer.Screen name="Home" component={HomeStackScreen} />
+        {/* <Drawer.Screen name='Welcome' component={WelcomeStackScreen}/> */}
       </Drawer.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
 export default Indexs;
 

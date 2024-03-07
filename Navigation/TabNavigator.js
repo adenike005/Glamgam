@@ -3,12 +3,11 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import Home from "../Screen/Home";
+import Cart from "../Screen/Cart";
+import History from "../Screen/History";
+import Love from "../Screen/Love";
 
-// import Settings from "../Screen/Settings";
-// import Color from "./Color";
-// import Love from "../Screen/Love";
-// import Cart from "../Screen/Cart";
-// import Search from "../Screen/Search";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -24,13 +23,17 @@ const TabNavigator = () => {
           if (route.name === "Home") {
             iconName = focused ? "home" : "home-outline";
           } 
-        //   else if (route.name === "Settings") {
-        //     iconName = focused ? "settings" : "settings-outline";
-        //   } else if (route.name === "Love") {
-        //     iconName = focused ? "heart-outline" : "heart-outline";
-        //   } else if (route.name === "Cart") {
-        //     iconName = focused ? "cart" : "cart-outline";
-        //   }else if (route.name === "Search") {
+          else if (route.name === "Cart") {
+            iconName = focused ? "cart" : "cart-outline";
+          } 
+          else if (route.name === "History") {
+            iconName = focused ? "gift" : "gift-outline";
+          }
+        else if (route.name === "Love") {
+            iconName = focused ? "heart-outline" : "heart-outline";
+          } 
+       
+        // else if (route.name === "Search") {
         //     iconName = focused ? "search-outline" : "search-outline";
         //   }
 
@@ -57,7 +60,18 @@ const TabNavigator = () => {
           headerShown: false, 
         }}
       />
-{/* 
+
+   
+
+
+        <Tab.Screen
+          name="History"
+          component={History}
+          options={{
+            headerShown: false, 
+          }}
+        
+        /> 
       <Tab.Screen
         name="Love"
         component={Love}
@@ -65,8 +79,7 @@ const TabNavigator = () => {
           headerShown: false,
         }}
       />
-
-      <Tab.Screen
+  <Tab.Screen
         name="Cart"
         component={Cart}
         options={{
@@ -75,21 +88,10 @@ const TabNavigator = () => {
         }}
       />
 
-      <Tab.Screen
-        name="Search"
-        component={Search}
-        options={{
-          headerShown: false,
-        }}
-      />
+    
 
-      <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          headerShown: false, 
-        }}
-      /> */}
+    
+
     </Tab.Navigator>
   );
 };
