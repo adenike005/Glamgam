@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     item: {
         marginVertical: 8,
-        marginHorizontal: windowWidth * 0.02,
+        marginHorizontal: windowWidth * 0.01,
         borderRadius: windowHeight * 0.05,
         justifyContent: 'center',
         alignItems: 'center',

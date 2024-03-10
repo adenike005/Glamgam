@@ -6,7 +6,7 @@ import Home from "../Screen/Home";
 import Welcome from "../Screen/Welcome";
 import { Ionicons } from "react-native-vector-icons";
 import TabNavigator from "./TabNavigator";
-import { TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View, PixelRatio } from "react-native";
 import { StatusBar } from "react-native";
 import Search from "../Screen/Search";
 import Settings from "../Screen/Settings"; // Corrected import statement
@@ -79,6 +79,9 @@ const HomeStack = createStackNavigator();
 //   );
 // };
 
+const fontScale = PixelRatio.getFontScale();
+const getFontSize = (size) => size / fontScale;
+
 const HomeStackScreen = ({ navigation }) => {
   return (
     <HomeStack.Navigator
@@ -92,7 +95,8 @@ const HomeStackScreen = ({ navigation }) => {
         headerTitleStyle: {
           fontWeight: "bold",
           fontFamily: "Italianno",
-          fontWeight: "300",
+          fontWeight: "100",
+          fontSize:getFontSize(20),
         },
         headerTitleAlign: "center",
       }}
@@ -102,6 +106,7 @@ const HomeStackScreen = ({ navigation }) => {
         component={TabNavigator}
         options={{
           title: "Glamgam",
+
           headerLeft: () => (
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
               <Ionicons
