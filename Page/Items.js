@@ -119,9 +119,9 @@ const MyFlatList = () => {
         data={data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
-        horizontal={true} // Render items horizontally
-        snapToInterval={windowWidth / 3} // Ensure items snap to one-third of the window width
-        decelerationRate={'fast'} // Adjust scrolling speed
+        horizontal={true} 
+        snapToInterval={windowWidth / 3} 
+        decelerationRate={'fast'} 
         showsHorizontalScrollIndicator={false}
       />
     </View>
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '80%',
-    height: '80%', // Make the height same as width to create a square image
+    height: '80%',
     resizeMode: 'cover',
     borderRadius: 10,
   },

@@ -95,7 +95,7 @@ const HomeStackScreen = ({ navigation }) => {
         headerTitleStyle: {
           fontWeight: "bold",
           fontFamily: "Italianno",
-          fontWeight: "100",
+          fontWeight: "500",
           fontSize:getFontSize(20),
         },
         headerTitleAlign: "center",
