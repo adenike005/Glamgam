@@ -1,134 +1,11 @@
-// import React from 'react';
-// import { View, StyleSheet, Text } from 'react-native';
-
-// const GridExample = () => {
-//   return (
-//     <View style={styles.container}>
-//       <View style={styles.row}>
-//         <View style={styles.item}>
-//           <Text>Item 1</Text>
-//         </View>
-//         <View style={styles.item}>
-//           <Text>Item 2</Text>
-//         </View>
-//         <View style={styles.item}>
-//           <Text>Item 3</Text>
-//         </View>
-//       </View>
-//       <View style={styles.row}>
-//         <View style={styles.item}>
-//           <Text>Item 4</Text>
-//         </View>
-//         <View style={styles.item}>
-//           <Text>Item 5</Text>
-//         </View>
-//         <View style={styles.item}>
-//           <Text>Item 6</Text>
-//         </View>
-//       </View>
-//       <View style={styles.row}>
-//         <View style={styles.item}>
-//           <Text>Item 4</Text>
-//         </View>
-//         <View style={styles.item}>
-//           <Text>Item 5</Text>
-//         </View>
-//         <View style={styles.item}>
-//           <Text>Item 6</Text>
-//         </View>
-//       </View>
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     // flex: 1,
-//     flexDirection: 'column',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     height:"100%",
-//    backgroundColor:"yellow",
-//   },
-//   row: {
-//     flexDirection: 'row',
-//     marginBottom: 10,
-//   },
-//   item: {
-//     flex: 1,
-//     backgroundColor: 'purple',
-//     margin: 5,
-//     padding: 10,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-
-// export default GridExample;
-
-
-    
-// import { StyleSheet, Text, View, Image } from 'react-native'
-// import React from 'react'
-
-// const Itemss = () => {
-//   return (
-//     <View style={styles.container}>
-//       <View style={styles.row}>
-//          <View style={styles.item}>
-//             <View style={styles.itemm}>
-//                 <Image source={require("../assets/make-up.png")} style={styles.image}/>
-//             </View>
-//             <View style={styles.itemm}>
-//                 <Text>ghjjkklll</Text>
-//             </View>
-//          </View>
-//       </View>
-//     </View>
-//   )
-// }
-
-// export default Itemss
-
-// const styles = StyleSheet.create({
-//     container:{
-//         // flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//     },
-//     row:{
-//         width:"100%",
-//         backgroundColor:"yellow",
-//         height: 200, // Set a fixed height or use flexbox properties to adjust the height
-//         // marginTop: 50,
-//     },
-//     item:{
-//         flexDirection: 'row',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         flex: 1,
-//     },
-//     itemm:{
-//         width: '30%', // Adjust the width as needed
-//         height: '30%', // Adjust the height as needed
-//         backgroundColor:"red",
-//         borderRadius: 30,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//     },
-//     image:{
-//         width: '50%',
-//         height: '50%',
-//         resizeMode: 'contain',
-//     }
-// })
-
-
 import React from 'react';
-import { View, FlatList, Image, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { View, FlatList, Image, Text, StyleSheet, Dimensions, TouchableOpacity, PixelRatio } from 'react-native';
 
 const { width } = Dimensions.get('window');
 const ITEM_WIDTH = width / 4;
+
+const fontScale = PixelRatio.getFontScale();
+const getFontSize = (size) => size / fontScale;
 
 const data = [
   { id: '1', image: require('../assets/make-up.png'), text: 'Makeup' },
@@ -178,6 +55,9 @@ const styles = StyleSheet.create({
     marginTop: 5,
     textAlign: 'center',
     marginBottom: '10%',
+    fontFamily:"Regular",
+    fontWeight:"400",
+    fontSize: getFontSize(13),
   },
 });
 

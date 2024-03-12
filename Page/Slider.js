@@ -10,7 +10,7 @@ const Slider = () => {
       <Swiper
         autoplay
         horizontal={false}
-        height={200}
+        height={width * 0.5} // Adjust the height to 80% of the screen width
         activeDotColor="#800080"
       >
         <View style={styles.slide}>
@@ -43,9 +43,9 @@ export default Slider
 
 const styles = StyleSheet.create({
   sliderContainer: {
-    height: 200,
+    height: width * 0.5, // Adjust the height to 80% of the screen width
     width: width * 0.9, // Adjust the width to 90% of the screen width
-    marginTop: "5%",
+    marginTop: width * 0.05, // Adjust the margin top to 5% of the screen width
     alignSelf: 'center',
     borderRadius: 8,
   },
@@ -61,3 +61,4 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
 })
+

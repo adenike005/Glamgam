@@ -10,6 +10,10 @@ export default function App() {
   const [loaded] = useFonts({
     // Montserrat: require('./assets/fonts/Yatra-One.ttf'),
       Italianno : require('./Font/Italianno-Regular.ttf'),
+      Light : require('./Font/Raleway-Light.ttf'),
+      Regular : require("./Font/Raleway-Regular.ttf"),
+      Medium : require('./Font/Raleway-Medium.ttf'),
+      SemiBold : require('./Font/Raleway-SemiBold.ttf')
 
   });
   if (!loaded) {

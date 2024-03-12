@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import Slider from '../Page/Slider'
 import Itemss from '../Page/Itemss'
+import Items from '../Page/Items'
 
 
 
@@ -14,8 +15,8 @@ const Home = () => {
       <View style={{ width:"100%", height:"30%", }}>
         <Itemss/>
       </View>
-      <View style={{ width:"100%", height:"30%", backgroundColor:"blue"}}>
-       <Text>ghjkk</Text>
+      <View style={{ width:"100%", height:"30%", }}>
+       <Items/>
       </View>
       
     </View>
