@@ -1,6 +1,7 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, ImageBackground, PixelRatio } from 'react-native';
-import React from 'react';
+import React , { useState } from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -11,6 +12,7 @@ const LipPage = ({ route }) => {
   const getFontSize = (size) => size / fontScale;
   const { item } = route.params;
   const navigation = useNavigation();
+  const [heartFilled, setHeartFilled] = useState(false);
 
   const handlePressMessage = () => {
     // Navigate to the message page
@@ -23,7 +25,11 @@ const LipPage = ({ route }) => {
      <ImageBackground
          source={item.image}
         style={styles.image}
-      />
+      >
+        <TouchableOpacity style={{ position: 'absolute', top: 10, right: 10 }}>
+          <Ionicons name='heart-outline' size={24} color='purple'/>
+        </TouchableOpacity>
+        </ImageBackground>
 
       </View>
       <View>
@@ -33,8 +39,8 @@ const LipPage = ({ route }) => {
         <Image source={item.images} style={styles.image}/>
         </TouchableOpacity>
       <View style={{ marginHorizontal: "5%" }}>
-      <Text style={{ fontSize: getFontSize(25) , marginBottom:"3%", fontWeight:"900",}}>{item.name}</Text>
-      <Text style={{ fontSize: getFontSize(15) , marginBottom:"3%", fontWeight:"400",color:'gray'}}>{item.year}</Text>
+      <Text style={{ fontSize: getFontSize(25) , fontWeight:"900", fontFamily:"Regular"}}>{item.name}</Text>
+      <Text style={{ fontSize: getFontSize(15) ,  fontWeight:"400",color:'gray', fontFamily:"Regular"}}>{item.year}</Text>
       </View>
       </View>
       <TouchableOpacity onPress={handlePressMessage}>

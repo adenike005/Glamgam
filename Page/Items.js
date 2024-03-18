@@ -158,10 +158,14 @@ const fontScale = PixelRatio.getFontScale();
 const getFontSize = (size) => size / fontScale;
 const data = [
     { id: '1', text: 'Hair Stylist', image: { uri: 'https://facts.net/wp-content/uploads/2023/09/10-unbelievable-facts-about-hair-stylist-1695688941.jpg' }, name : "Alice Smith", year : "10+ years experience" , images : { uri : "https://source.boomplaymusic.com/buzzgroup2/M00/15/EF/rBEe_F_veBqATUa_AAEPaxILwq4977.jpg"}},
-    { id: '2', text: 'Makeup Stylist', image: { uri: 'https://hellogiggles.com/wp-content/uploads/sites/7/2023/01/makeup-artist-1.jpg?quality=82&strip=1&resize=640%2C360' }, name : "Johnson Bob" ,  year : "11+ years experience", images : { uri : "https://img.lovepik.com/free-png/20210919/lovepik-beautiful-lady-png-image_400955524_wh1200.png"}},
-    { id: '3', text: 'Spa Stylist', image: { uri: 'https://media.istockphoto.com/id/921797424/photo/woman-in-mask-on-face-in-spa-beauty-salon.jpg?s=612x612&w=0&k=20&c=gGSPZOjIS2wcwQyOcjANOKpRVU0KR_iEDbRACnAoIXA=' }, name : "Charlie Brown",  year : "16+ years experience" ,images : { uri : "https://img.lovepik.com/free-png/20210919/lovepik-beautiful-lady-png-image_400955524_wh1200.png"} },
-    { id: '4', text: 'Nail Stylist', image: { uri: 'https://nail-spa-andover-mn.com/uploads/ngm87qlpz0z27n7b/logo/2017/09/29/1_1506626925_7_Slider_03.jpg' }, name : "Lee Charlie" ,  year : "9+ years experience", images : { uri : "https://img.lovepik.com/free-png/20210919/lovepik-beautiful-lady-png-image_400955524_wh1200.png"}},
-    { id: '5', text: 'Perfume Stylist', image: { uri: 'https://assets-global.website-files.com/61a5d57e5f1c45eecb23d528/643cc13dcf71f33108c85b60_perfumer%2010th%20image.jpg' } , name : "Miller Evee",  year : "14+ years experience", images : { uri : "https://img.lovepik.com/free-png/20210919/lovepik-beautiful-lady-png-image_400955524_wh1200.png"}},
+
+    { id: '2', text: 'Makeup Stylist', image: { uri: 'https://hellogiggles.com/wp-content/uploads/sites/7/2023/01/makeup-artist-1.jpg?quality=82&strip=1&resize=640%2C360' }, name : "Johnson Bob" ,  year : "11+ years experience", images : { uri : "https://img.freepik.com/free-photo/blue-eyes-wavy-modern-one-beautiful_1139-828.jpg"}},
+
+    { id: '3', text: 'Spa Stylist', image: { uri: 'https://media.istockphoto.com/id/921797424/photo/woman-in-mask-on-face-in-spa-beauty-salon.jpg?s=612x612&w=0&k=20&c=gGSPZOjIS2wcwQyOcjANOKpRVU0KR_iEDbRACnAoIXA=' }, name : "Charlie Brown",  year : "16+ years experience" ,images : { uri : "https://img.freepik.com/free-photo/hair-style-street-fashion-beautiful-girl_1139-844.jpg"} },
+
+    { id: '4', text: 'Nail Stylist', image: { uri: 'https://nail-spa-andover-mn.com/uploads/ngm87qlpz0z27n7b/logo/2017/09/29/1_1506626925_7_Slider_03.jpg' }, name : "Lee Charlie" ,  year : "9+ years experience", images : { uri : "https://img.freepik.com/free-photo/beautiful-girl-stands-near-walll-with-leaves_8353-5378.jpg"}},
+
+    { id: '5', text: 'Perfume Stylist', image: { uri: 'https://assets-global.website-files.com/61a5d57e5f1c45eecb23d528/643cc13dcf71f33108c85b60_perfumer%2010th%20image.jpg' } , name : "Miller Evee",  year : "14+ years experience", images : { uri : "https://img.freepik.com/free-photo/beautiful-young-woman-posing-park_1153-6549.jpg"}},
 ];
 
 const BeautySpecialistFlatList = () => {
