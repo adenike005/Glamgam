@@ -1,76 +1,109 @@
-import { View, FlatList, StyleSheet, Text, Dimensions, Image, PixelRatio, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
+import { View, FlatList, Text, StyleSheet, Dimensions, TouchableOpacity, PixelRatio, Image } from 'react-native';
 
+const { width } = Dimensions.get('window');
+const itemWidth = width / 4;
 const fontScale = PixelRatio.getFontScale();
 const getFontSize = (size) => size / fontScale;
 
-const Sliders = () => {
-    const navigation = useNavigation();
+const data1 = ['Services', 'Reviews', 'Gallary', 'Details'];
+const defaultSelectedItem = 'Services';
 
-    const data = [
-        { id: '1', title: 'Lip', image: require("../assets/lip.jpg"), route: 'LipPage' },
-        { id: '2', title: 'nail', image: require("../assets/nail.jpg"), route: 'NailPage' },
-        { id: '4', title: 'Hair', image: require("../assets/hair.jpg"), route: 'HairPage' },
-        { id: '3', title: 'Makeup', image: require("../assets/markup.jpg"), route: 'MakeupPage' },
-        { id: '5', title: 'Spa', image: require("../assets/mark.png"), route: 'SpaPage' },
-    ];
+const FourFlatlists = ({ item }) => {
+  const [selectedItem, setSelectedItem] = useState(defaultSelectedItem);
 
-    const handleImagePress = (item) => {
-        navigation.navigate(item.route);
-    };
+  useEffect(() => {
+    // ... Perform any actions related to the default selected item
+  }, [selectedItem]);
 
-    const renderItem = ({ item }) => (
-        <TouchableOpacity onPress={() => handleImagePress(item)}>
-            <View style={styles.item}>
-                <Image source={item.image} style={styles.image} />
-                <Text style={styles.title}>{item.title}</Text>
-            </View>
-        </TouchableOpacity>
-    );
+  const handleItemPress = (item) => {
+    setSelectedItem(item);
+  };
 
-    return (
-        <View style={styles.container}>
-            <FlatList
-                data={data}
-                horizontal={true}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.contentContainer}
+  const renderItem = ({ item }) => (
+    <TouchableOpacity onPress={() => handleItemPress(item)} activeOpacity={0.8}>
+      <Text style={[styles.item, selectedItem === item ? styles.selectedItem : styles.unselectedItem]}>{item}</Text>
+    </TouchableOpacity>
+  );
+
+  const renderContent = () => {
+    switch (selectedItem) {
+      case 'Services':
+        return (
+          <View style={{ display: 'flex', alignItems: 'center', flexDirection:"row" }}>
+            <Image
+              source={item.images} // Assuming item.item1 contains the image source
+              style={{ width: 100, height: 100 }}
+              resizeMode="contain" // Adjust resizeMode if needed (e.g., "cover")
             />
-        </View>
-    );
+            <Text>{item.rating}</Text>
+          </View>
+        );
+      case 'Reviews':
+        return <Text>{item.rating}</Text>;
+      case 'Gallary':
+        return <Text>Gallary Content</Text>;
+      case 'Details':
+        return <Text>Details Content</Text>;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={data1}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.flatListContent}
+        initialScrollIndex={data1.indexOf(defaultSelectedItem)}
+      />
+      <View style={styles.contentContainer}>{renderContent()}</View>
+    </View>
+  );
 };
 
-export default Sliders;
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
-
 const styles = StyleSheet.create({
-    contentContainer: {
-        alignItems: 'center',
-    },
-    item: {
-        marginVertical: 8,
-        marginHorizontal: windowWidth * 0.01,
-        borderRadius: windowHeight * 0.05,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: windowHeight * 0.09,
-        height: windowHeight * 0.09,
-    },
-    image: {
-        width: '70%',
-        height: '70%',
-        borderRadius: windowHeight * 0.05,
-    },
-    title: {
-        fontSize: getFontSize(10),
-        color: "gray",
-    },
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  flatListContent: {
+    paddingHorizontal: (width - itemWidth * 4) / 2,
+  },
+  item: {
+    width: itemWidth,
+    padding: 20,
+    marginHorizontal: (width - itemWidth * 4) / 8,
+    textAlign: 'center',
+    borderBottomWidth: 1.5,
+    fontSize: getFontSize(13),
+  },
+  selectedItem: {
+    fontFamily: 'Medium',
+    fontWeight: 'bold',
+    borderBottomColor: 'red',
+  },
+  unselectedItem: {
+    fontFamily: 'Regular',
+    fontWeight: 'normal',
+    borderBottomColor: 'gray',
+  },
+  contentContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
 });
+
+export default FourFlatlists;
+
+
+
+
 
 
 

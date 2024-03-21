@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import Sliders from '../Page/Sliders'
 
 const LipPage = ({ route }) => {
   const fontScale = PixelRatio.getFontScale();
@@ -51,12 +52,12 @@ const LipPage = ({ route }) => {
           style={styles.image}
         >
           <TouchableOpacity style={{ position: 'absolute', top: 10, right: 10 }} onPress={handleHeartPress}>
-            <Ionicons name={heartFilled ? 'heart' : 'heart-outline'} size={24} color={heartFilled ? 'red' : 'purple'} />
+            <Ionicons name={heartFilled ? 'heart' : 'heart-outline'} size={24} color={heartFilled ? 'red' : 'red'} />
           </TouchableOpacity>
         </ImageBackground>
       </View>
-      <View>
-        <View style={{marginTop:"5%", paddingHorizontal:"5%", display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
+      <View style={{paddingHorizontal:"5%", height:"20%", }}>
+        <View style={{marginTop:"5%",  display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"space-between", marginBottom:"5%"}}>
           <View style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
             <TouchableOpacity style={styles.circle}>
               <Image source={item.images} style={styles.image}/>
@@ -67,9 +68,19 @@ const LipPage = ({ route }) => {
             </View>
           </View>
           <TouchableOpacity onPress={handlePressMessage}>
-            <AntDesign name="message1" size={24} color="purple" />
+            <AntDesign name="message1" size={24} color="red" />
           </TouchableOpacity>
         </View>
+       <View style={{paddingHorizontal:"15%", display:"flex", flexDirection:"row", alignItems:"center"}}>
+       <Ionicons name="star" size={20} color="red" />
+       <View style={{display:"flex", flexDirection:"row" ,alignItems:"center", paddingHorizontal:"3%"}}>
+        <Text style={{ fontSize: getFontSize(19), fontFamily:"SemiBold"}}>{item.rating}</Text>
+        <Text style={{fontSize: getFontSize(15) , paddingHorizontal:"3%", fontWeight:"400",color:'gray', fontFamily:"Regular"}}>{item.val}</Text>
+       </View>
+      </View>
+      </View>
+      <View>
+        <Sliders item={item}/>
       </View>
     </View>
   );
