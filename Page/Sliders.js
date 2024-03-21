@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList, Text, StyleSheet, Dimensions, TouchableOpacity, PixelRatio, Image } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Buttom from '../Navigation/Buttom';
 
 const { width } = Dimensions.get('window');
 const itemWidth = width / 4;
@@ -27,28 +29,103 @@ const FourFlatlists = ({ item }) => {
   );
 
   const renderContent = () => {
-    switch (selectedItem) {
-      case 'Services':
-        return (
-          <View style={{ display: 'flex', alignItems: 'center', flexDirection:"row" }}>
-            <Image
-              source={item.images} // Assuming item.item1 contains the image source
-              style={{ width: 100, height: 100 }}
-              resizeMode="contain" // Adjust resizeMode if needed (e.g., "cover")
-            />
-            <Text>{item.rating}</Text>
+    if (selectedItem === 'Services') {
+      return (
+       <View >
+       <View style={{display:"flex", flexDirection:"column", gap: 10, }}>
+       <View style={{ display: 'flex',  flexDirection: "row", alignItems:"center", borderBottomWidth:0.4, borderBottomColor: 'gray' }}>
+          <TouchableOpacity style={styles.tabIcon}>
+          <Image
+            source={item.items} 
+            style={{width:"100%", height:"100%", borderRadius: 20}}
+            resizeMode="contain" 
+          />
+          </TouchableOpacity>
+         <View style={{display:"flex", flexDirection:"column", gap:20,}}>
+         <View style={{display:"flex", flexDirection:"row"}}>
+          <View>
+          <Text style={{fontSize:getFontSize(20), fontWeight:"bold", fontFamily:"SemiBold", marginHorizontal:"10%" }}>{item.textss}</Text>
+          <Text style={{fontSize:getFontSize(12), fontWeight:"100", fontFamily:"Light", marginHorizontal:"10%" }}>{item.texts}</Text>
           </View>
-        );
-      case 'Reviews':
-        return <Text>{item.rating}</Text>;
-      case 'Gallary':
-        return <Text>Gallary Content</Text>;
-      case 'Details':
-        return <Text>Details Content</Text>;
-      default:
-        return null;
+          <View>
+            <Text style={{fontSize:getFontSize(12), fontWeight:"bold", fontFamily:"SemiBold", }}>{item.price}</Text>
+          </View>
+          </View>
+          <View style={{display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
+            <View><Text style={{fontSize:getFontSize(10), fontWeight:"100", fontFamily:"Light", marginHorizontal:"10%" }} >120km</Text></View>
+            <View>
+                <Buttom title='Book'/>
+            </View>
+            </View>
+         </View>
+        </View>
+        <View style={{ display: 'flex',  flexDirection: "row", alignItems:"center", borderBottomWidth:0.4, borderBottomColor: 'gray' }}>
+          <TouchableOpacity style={styles.tabIcon}>
+          <Image
+            source={item.items} 
+            style={{width:"100%", height:"100%", borderRadius: 20}}
+            resizeMode="contain" 
+          />
+          </TouchableOpacity>
+         <View style={{display:"flex", flexDirection:"column", gap:20,}}>
+         <View style={{display:"flex", flexDirection:"row"}}>
+          <View>
+          <Text style={{fontSize:getFontSize(20), fontWeight:"bold", fontFamily:"SemiBold", marginHorizontal:"10%" }}>{item.textss}</Text>
+          <Text style={{fontSize:getFontSize(12), fontWeight:"100", fontFamily:"Light", marginHorizontal:"10%" }}>{item.texts}</Text>
+          </View>
+          <View>
+            <Text style={{fontSize:getFontSize(12), fontWeight:"bold", fontFamily:"SemiBold", }}>{item.price}</Text>
+          </View>
+          </View>
+          <View style={{display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
+            <View><Text style={{fontSize:getFontSize(10), fontWeight:"100", fontFamily:"Light", marginHorizontal:"10%" }} >120km</Text></View>
+            <View>
+                <Buttom title='Book'/>
+            </View>
+            </View>
+         </View>
+        </View>
+        <View style={{ display: 'flex',  flexDirection: "row", alignItems:"center", borderBottomWidth:0.4, borderBottomColor: 'gray' }}>
+          <TouchableOpacity style={styles.tabIcon}>
+          <Image
+            source={item.items} 
+            style={{width:"100%", height:"100%", borderRadius: 20}}
+            resizeMode="contain" 
+          />
+          </TouchableOpacity>
+         <View style={{display:"flex", flexDirection:"column", gap:20,}}>
+         <View style={{display:"flex", flexDirection:"row"}}>
+          <View>
+          <Text style={{fontSize:getFontSize(20), fontWeight:"bold", fontFamily:"SemiBold", marginHorizontal:"10%" }}>{item.textss}</Text>
+          <Text style={{fontSize:getFontSize(12), fontWeight:"100", fontFamily:"Light", marginHorizontal:"10%" }}>{item.texts}</Text>
+          </View>
+          <View>
+            <Text style={{fontSize:getFontSize(12), fontWeight:"bold", fontFamily:"SemiBold", }}>{item.price}</Text>
+          </View>
+          </View>
+          <View style={{display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
+            <View><Text style={{fontSize:getFontSize(10), fontWeight:"100", fontFamily:"Light", marginHorizontal:"10%" }} >120km</Text></View>
+            <View>
+                <Buttom title='Book'/>
+            </View>
+            </View>
+         </View>
+        </View>
+        
+       </View>
+       </View>
+      );
+    } else if (selectedItem === 'Reviews') {
+      return <Text>{item.rating}</Text>;
+    } else if (selectedItem === 'Gallary') {
+      return <Text>Gallary Content</Text>;
+    } else if (selectedItem === 'Details') {
+      return <Text>Details Content</Text>;
+    } else {
+      return null;
     }
   };
+  
 
   return (
     <View style={styles.container}>
@@ -61,16 +138,13 @@ const FourFlatlists = ({ item }) => {
         contentContainerStyle={styles.flatListContent}
         initialScrollIndex={data1.indexOf(defaultSelectedItem)}
       />
-      <View style={styles.contentContainer}>{renderContent()}</View>
+      <View style={{paddingHorizontal:"5%"}}>{renderContent()}</View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  
   flatListContent: {
     paddingHorizontal: (width - itemWidth * 4) / 2,
   },
@@ -92,10 +166,12 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     borderBottomColor: 'gray',
   },
-  contentContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
+  
+  tabIcon: {
+    width: 100, 
+    height: 100, 
+    marginBottom: 10,
+    borderRadius: 30,
   },
 });
 

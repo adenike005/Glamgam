@@ -46,7 +46,7 @@ const LipPage = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <View style={{width:"100%", height:"30%"}}>
+      <View style={{width:"100%", height:"25%"}}>
         <ImageBackground
           source={item.image}
           style={styles.image}
@@ -56,7 +56,7 @@ const LipPage = ({ route }) => {
           </TouchableOpacity>
         </ImageBackground>
       </View>
-      <View style={{paddingHorizontal:"5%", height:"20%", }}>
+      <View style={{paddingHorizontal:"5%", height:"15%", }}>
         <View style={{marginTop:"5%",  display:"flex", flexDirection:"row", alignItems:"center", justifyContent:"space-between", marginBottom:"5%"}}>
           <View style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
             <TouchableOpacity style={styles.circle}>
@@ -79,7 +79,7 @@ const LipPage = ({ route }) => {
        </View>
       </View>
       </View>
-      <View>
+      <View style={{height:'60%'}}>
         <Sliders item={item}/>
       </View>
     </View>
