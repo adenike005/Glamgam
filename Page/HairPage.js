@@ -1,12 +1,24 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Image, StyleSheet } from 'react-native';
 
-const HairPage = () => {
+const HairPage = ({ route }) => {
+  const { image } = route.params; // Get the image URI from navigation parameters
+  console.log(image)
+
   return (
-    <View>
-      <Text>HairPage</Text>
+    <View style={styles.container}>
+      <Image source={{ uri: image }} style={styles.image} resizeMode="cover" />
     </View>
-  )
-}
+  );
+};
 
-export default HairPage
+const styles = StyleSheet.create({
+ 
+  image: {
+    width: 500,
+    height: 500,
+    borderRadius: 20,
+  },
+});
+
+export default HairPage;

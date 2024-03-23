@@ -1,10 +1,12 @@
-import { View, Text } from 'react-native'
+import { View, Text, PixelRatio , Image} from 'react-native'
 import React from 'react'
+const fontScale = PixelRatio.getFontScale();
+const getFontSize = (size) => size / fontScale;
 
-const History = () => {
+const History = ({item}) => {
   return (
     <View>
-      <Text>History</Text>
+      <Image source={item.Image} style={{width:100, height:100, resizeMode:"contain"}}/>
     </View>
   )
 }

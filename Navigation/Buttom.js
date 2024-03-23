@@ -1,9 +1,20 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; 
 
-const Buttom = ({ title, onPress }) => {
+const Button = ({ title, item,  }) => { // Receive the image as a prop
+  const navigation = useNavigation();
+  console.log(item);
+ 
+
+  const handlePress = () => {
+  //  navigation.navigate('HairPage', { item });
+      navigation.navigate('HairPage', { item });
+
+  };
+
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity style={styles.button} onPress={handlePress}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
@@ -24,4 +35,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Buttom;
+export default Button;
+
+
