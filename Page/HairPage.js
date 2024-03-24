@@ -2,23 +2,32 @@ import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
 const HairPage = ({ route }) => {
-  const { image } = route.params; // Get the image URI from navigation parameters
-  console.log(image)
+  // Extract the imageUri from the route params
+  const { imageUri } = route.params;
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: image }} style={styles.image} resizeMode="cover" />
+      {/* Render the image */}
+      <Image source={{ uri: imageUri }} style={styles.image} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
- 
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   image: {
-    width: 500,
-    height: 500,
-    borderRadius: 20,
+    width: 200, // Adjust the width as needed
+    height: 200, // Adjust the height as needed
+    resizeMode: 'cover', // Adjust the resizeMode as needed
   },
 });
 
 export default HairPage;
+
+
+
+

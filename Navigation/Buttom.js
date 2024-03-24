@@ -2,15 +2,12 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; 
 
-const Button = ({ title, item,  }) => { // Receive the image as a prop
+const Button = ({ title, imageUri }) => { // Receive the imageUri parameter
   const navigation = useNavigation();
-  console.log(item);
- 
-
+  
   const handlePress = () => {
-  //  navigation.navigate('HairPage', { item });
-      navigation.navigate('HairPage', { item });
-
+    // Navigate to 'HairPage' with the imageUri parameter
+    navigation.navigate('HairPage', { imageUri });
   };
 
   return (
@@ -36,5 +33,6 @@ const styles = StyleSheet.create({
 });
 
 export default Button;
+
 
 
