@@ -41,7 +41,7 @@ const LipPage = ({ route }) => {
 
   const handlePressMessage = () => {
     // Navigate to the message page
-    navigation.navigate('History');
+    navigation.navigate('MakeupPage');
   };
 
   return (
@@ -79,7 +79,7 @@ const LipPage = ({ route }) => {
        </View>
       </View>
       </View>
-      <View style={{height:'60%'}}>
+      <View style={{height:'60%', width:"100%", }}>
         <Sliders item={item}/>
       </View>
     </View>

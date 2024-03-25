@@ -187,7 +187,7 @@ const FourFlatlists = ({ item }) => {
   const renderContent = () => {
     if (selectedItem === "Services") {
       return (
-        <View>
+        <View style={{height:"85%"}}>
           <View style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <View
               style={{
@@ -465,6 +465,8 @@ const FourFlatlists = ({ item }) => {
 const styles = StyleSheet.create({
   flatListContent: {
     paddingHorizontal: (width - itemWidth * 4) / 2,
+    width:"100%",
+    height:"100%"
   },
   item: {
     width: itemWidth,
@@ -472,7 +474,7 @@ const styles = StyleSheet.create({
     marginHorizontal: (width - itemWidth * 4) / 8,
     textAlign: "center",
     borderBottomWidth: 1.5,
-    fontSize: getFontSize(13),
+    fontSize: getFontSize(12),
   },
   selectedItem: {
     fontFamily: "Medium",
@@ -486,10 +488,9 @@ const styles = StyleSheet.create({
   },
 
   tabIcon: {
-    width: 100,
-    height: 100,
-    marginBottom: 10,
-    borderRadius: 30,
+    width: width * 0.2,
+    height: width * 0.2,
+    borderRadius: 20,
   },
 });
 

@@ -20,10 +20,13 @@ const Button = ({ title, imageUri }) => { // Receive the imageUri parameter
 const styles = StyleSheet.create({
   button: {
     backgroundColor: 'red',
+    width:"100%",
+    
     paddingVertical: 6,
-    paddingHorizontal: 24,
-    borderRadius: 6,
+    paddingHorizontal: '10%',
+    borderRadius: 3,
     alignItems: 'center',
+    marginBottom:"3%"
   },
   buttonText: {
     color: 'white',
