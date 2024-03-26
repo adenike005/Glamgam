@@ -15,6 +15,7 @@ import HairPage from "../Page/HairPage";
 import NailPage from "../Page/NailPage";
 import MakeupPage from "../Page/MakeupPage";
 import SpaPage from "../Page/SpaPage";
+import Login from '../Screen/Login';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -82,25 +83,28 @@ const HomeStack = createStackNavigator();
 const fontScale = PixelRatio.getFontScale();
 const getFontSize = (size) => size / fontScale;
 
+
+
 const HomeStackScreen = ({ navigation }) => {
   return (
     <HomeStack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#fff",
-          shadowColor: "#fff", // iOS
-          elevation: 0, // Android
-        },
-        headerTintColor: "purple",
-        headerTitleStyle: {
-          fontWeight: "bold",
-          fontFamily: "Italianno",
-          fontWeight: "500",
-          fontSize:getFontSize(20),
-        },
-        headerTitleAlign: "center",
-      }}
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#fff",
+        shadowColor: "#fff", // iOS
+        elevation: 0, // Android
+      },
+      headerTintColor: "purple",
+      headerTitleStyle: {
+        fontWeight: "bold",
+        fontFamily: "Italianno",
+        fontWeight: "500",
+        fontSize:getFontSize(20),
+      },
+      headerTitleAlign: "center",
+    }}
     >
+    <HomeStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <HomeStack.Screen
         name="Home"
         component={TabNavigator}
