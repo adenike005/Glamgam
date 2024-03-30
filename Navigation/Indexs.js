@@ -15,7 +15,7 @@ import HairPage from "../Page/HairPage";
 import NailPage from "../Page/NailPage";
 import MakeupPage from "../Page/MakeupPage";
 import SpaPage from "../Page/SpaPage";
-import Login from '../Screen/Login';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -104,7 +104,7 @@ const HomeStackScreen = ({ navigation }) => {
       headerTitleAlign: "center",
     }}
     >
-    <HomeStack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+   
       <HomeStack.Screen
         name="Home"
         component={TabNavigator}
